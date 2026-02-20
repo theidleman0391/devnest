@@ -285,8 +285,8 @@ class CardStreamController {
       if (this.recentDrag) return;
       document.dispatchEvent(new CustomEvent("scanner-card-selected", {
         detail: {
-          title: this.t(p.titleKey),
-          desc: this.t(p.descKey),
+          titleKey: p.titleKey,
+          descKey: p.descKey,
           tags: p.tags,
           liveUrl: p.liveUrl,
           imageUrl: p.imageUrl,
@@ -576,8 +576,8 @@ class ParticleScanner {
 
 /* ── React Component ─────────────────────────────────── */
 interface SelectedProject {
-  title: string;
-  desc: string;
+  titleKey: string;
+  descKey: string;
   tags: string[];
   liveUrl?: string;
   imageUrl?: string;
@@ -585,7 +585,7 @@ interface SelectedProject {
 }
 
 const Portfolio = () => {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const cardLineRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctrlRef = useRef<CardStreamController | null>(null);
@@ -613,7 +613,7 @@ const Portfolio = () => {
       document.removeEventListener("scanner-card-selected", onSelected);
       delete (window as any).__setScannerActive;
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [lang]); // re-run when language changes
 
   const closeOverlay = () => {
     setSelected(null);
@@ -686,7 +686,7 @@ const Portfolio = () => {
                 {selected.imageUrl ? (
                   <img
                     src={selected.imageUrl}
-                    alt={selected.title}
+                    alt={t(selected.titleKey)}
                     className="w-full h-full object-cover object-top brightness-40"
                   />
                 ) : (
@@ -696,13 +696,13 @@ const Portfolio = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
                 {/* Title on image */}
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <h3 className="font-mono font-bold text-xl text-white drop-shadow">{selected.title}</h3>
+                  <h3 className="font-mono font-bold text-xl text-white drop-shadow">{t(selected.titleKey)}</h3>
                 </div>
               </div>
 
               {/* Info */}
               <div className="bg-card p-5 flex flex-col gap-4">
-                <p className="text-muted-foreground text-sm leading-relaxed">{selected.desc}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{t(selected.descKey)}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
