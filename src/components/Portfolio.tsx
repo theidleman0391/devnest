@@ -206,12 +206,15 @@ class CardStreamController {
         const iR = Math.min(sr - r.left, r.width);
         n.style.setProperty("--clip-right", `${(iL / r.width) * 100}%`);
         a.style.setProperty("--clip-left", `${(iR / r.width) * 100}%`);
+        w.classList.add("scanner-card-scanned");
       } else if (r.right < sl) {
         n.style.setProperty("--clip-right", "100%");
         a.style.setProperty("--clip-left", "100%");
+        w.classList.add("scanner-card-scanned");
       } else {
         n.style.setProperty("--clip-right", "0%");
         a.style.setProperty("--clip-left", "0%");
+        w.classList.remove("scanner-card-scanned");
       }
     });
     (window as any).__setScannerActive?.(scanning);
@@ -463,10 +466,10 @@ class ParticleScanner {
 
   private drawLightBar() {
     const vg = this.ctx.createLinearGradient(0, 0, 0, this.h);
-    vg.addColorStop(0, "rgba(255,255,255,0)");
-    vg.addColorStop(this.fadeZone / this.h, "rgba(255,255,255,1)");
-    vg.addColorStop(1 - this.fadeZone / this.h, "rgba(255,255,255,1)");
-    vg.addColorStop(1, "rgba(255,255,255,0)");
+    vg.addColorStop(0, "transparent");
+    vg.addColorStop(0.15, "rgba(255,255,255,1)");
+    vg.addColorStop(0.85, "rgba(255,255,255,1)");
+    vg.addColorStop(1, "transparent");
 
     this.ctx.globalCompositeOperation = "lighter";
     const target = this.scanningActive ? 3.5 : 1;
