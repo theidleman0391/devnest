@@ -252,4 +252,254 @@
 .scanner-control-btn:hover {
     border-color: hsl(var(--primary) / 0.5);
     color: hsl(var(--primary));
+    margin-left: calc(-50vw + 50%);
+    height: 260px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%);
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%);
+}
+
+/* Card stream */
+.scanner-card-stream {
+    position: absolute;
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+    z-index: 2;
+}
+
+.scanner-card-line {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    cursor: grab;
+    user-select: none;
+    will-change: transform;
+}
+
+.scanner-card-line:active {
+    cursor: grabbing;
+}
+
+/* Card wrapper */
+.scanner-card-wrapper {
+    position: relative;
+    width: 400px;
+    height: 240px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.22s ease, filter 0.22s ease;
+}
+
+.scanner-card-wrapper:hover {
+    transform: translateY(-5px) scale(1.005);
+}
+
+/* "click for info" hint that fades in on hover */
+.scanner-card-wrapper::after {
+    content: "click for info ↓";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: hsl(var(--primary) / 0.18);
+    border: 1px solid hsl(var(--primary) / 0.5);
+    color: hsl(var(--primary));
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    pointer-events: none;
+    z-index: 20;
+    white-space: nowrap;
+}
+
+.scanner-card-wrapper:hover::after {
+    opacity: 1;
+}
+
+/* Hide hint on cards that have already passed the scanner */
+.scanner-card-wrapper.scanner-card-scanned::after {
+    display: none;
+}
+
+/* Both card layers */
+.scanner-card-normal,
+.scanner-card-ascii {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 240px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Normal card: clip from left */
+.scanner-card-normal {
+    z-index: 2;
+    clip-path: inset(0 0 0 var(--clip-right, 0%));
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ASCII card: clip from right */
+.scanner-card-ascii {
+    z-index: 1;
+    clip-path: inset(0 calc(100% - var(--clip-left, 0%)) 0 0);
+    background: #030b07;
+}
+
+/* Card image */
+.scanner-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Placeholder when no image */
+.scanner-card-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--muted)));
+}
+
+/* Info overlay at bottom of normal card */
+.scanner-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 12px 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.scanner-card-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    display: block;
+}
+
+.scanner-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.scanner-card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: hsl(var(--primary) / 0.15);
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.25);
+}
+
+/* External link */
+.scanner-card-link {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    z-index: 5;
+    line-height: 1;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.scanner-card-link:hover {
+    background: hsl(var(--primary) / 0.85);
+    border-color: hsl(var(--primary));
+    color: #fff;
+}
+
+/* ASCII / code overlay text */
+.scanner-ascii-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: hsl(var(--primary) / 0.65);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    line-height: 13px;
+    overflow: hidden;
+    white-space: pre;
+    padding: 0;
+    margin: 0;
+}
+
+/* Scanner canvas (purple beam + particles) */
+.scanner-canvas {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 300px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+    .scanner-canvas {
+        display: none;
+    }
+}
+
+/* Control buttons */
+.scanner-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.scanner-control-btn {
+    padding: 5px 16px;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 20px;
+    color: hsl(var(--muted-foreground));
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.scanner-control-btn:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    color: hsl(var(--primary));
+
 }
