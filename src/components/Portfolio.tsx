@@ -115,7 +115,9 @@ class CardStreamController {
   private init() {
     this.populate();
     this.calcDims();
-    this.pos = Math.floor(window.innerWidth / 2) + 600;
+    const isMobile = window.innerWidth < 1024;
+    const cx = isMobile ? window.innerWidth * 0.35 : window.innerWidth / 2;
+    this.pos = Math.floor(cx) + 600;
     this.el.style.transform = `translateX(${this.pos}px)`;
     this.el.addEventListener("mousedown", (e) => this.startDrag(e));
     document.addEventListener("mousemove", this.onMM);
@@ -190,7 +192,10 @@ class CardStreamController {
   }
 
   updateClip() {
-    const cx = window.innerWidth / 2;
+    // On mobile (<768px), move scanner to 30% of screen width to leave room for cards.
+    // On desktop, keep it centered at 50%.
+    const isMobile = window.innerWidth < 1024;
+    const cx = isMobile ? window.innerWidth * 0.35 : window.innerWidth / 2;
     const sw = 8;
     const sl = cx - sw / 2;
     const sr = cx + sw / 2;
@@ -368,7 +373,8 @@ class ParticleScanner {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d")!;
     this.w = window.innerWidth;
-    this.lightBarX = this.w / 2;
+    const isMobile = window.innerWidth < 1024;
+    this.lightBarX = isMobile ? window.innerWidth * 0.35 : window.innerWidth / 2;
     this.onResizeFn = () => this.resize();
     this.gradCanvas = document.createElement("canvas");
     // Read primary color from CSS variable
@@ -389,7 +395,8 @@ class ParticleScanner {
 
   private resize() {
     this.w = window.innerWidth;
-    this.lightBarX = this.w / 2;
+    const isMobile = window.innerWidth < 1024;
+    this.lightBarX = isMobile ? window.innerWidth * 0.35 : window.innerWidth / 2;
     this.setupCanvas();
   }
 
