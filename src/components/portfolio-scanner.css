@@ -223,6 +223,12 @@
     pointer-events: none;
 }
 
+@media (max-width: 1023px) {
+    .scanner-canvas {
+        display: none;
+    }
+}
+
 /* Control buttons */
 .scanner-controls {
     display: flex;

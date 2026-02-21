@@ -200,6 +200,21 @@ class CardStreamController {
     const sl = cx - sw / 2;
     const sr = cx + sw / 2;
     let scanning = false;
+
+    // If mobile, keep all cards fully normal, no ASCII clipping effect at all.
+    if (isMobile) {
+      document.querySelectorAll<HTMLElement>(".scanner-card-wrapper").forEach((w) => {
+        const n = w.querySelector<HTMLElement>(".scanner-card-normal");
+        const a = w.querySelector<HTMLElement>(".scanner-card-ascii");
+        if (!n || !a) return;
+        n.style.setProperty("--clip-right", "0%");
+        a.style.setProperty("--clip-left", "0%");
+        w.classList.remove("scanner-card-scanned");
+      });
+      (window as any).__setScannerActive?.(false);
+      return;
+    }
+
     document.querySelectorAll<HTMLElement>(".scanner-card-wrapper").forEach((w) => {
       const r = w.getBoundingClientRect();
       const n = w.querySelector<HTMLElement>(".scanner-card-normal");
