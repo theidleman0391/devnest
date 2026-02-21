@@ -34,7 +34,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "project.analytics.desc": "Data visualization dashboard with interactive charts, custom SQL queries, and automated reporting via serverless functions.",
     "project.social.title": "Social Media App",
     "project.social.desc": "Real-time social platform with authentication, file storage, feeds, and notifications — powered by Supabase backend.",
-    "project.roofcrm.title": "RoofConnect CRM",
+    "project.roofcrm.title": "RoofConnect CRM (PC Only)",
     "project.roofcrm.desc": "CRM platform built for roofing businesses. Manage clients, track projects, and streamline operations with an AI-powered assistant. Powered by Supabase for secure cloud authentication. Demo: demuser@gmail.com / demouser1",
     "project.demo.credentials": "Demo credentials",
 
@@ -80,7 +80,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "project.analytics.desc": "Panel de visualización de datos con gráficos interactivos, consultas SQL personalizadas e informes automatizados mediante funciones serverless.",
     "project.social.title": "App de Redes Sociales",
     "project.social.desc": "Plataforma social en tiempo real con autenticación, almacenamiento de archivos, feeds y notificaciones — impulsada por backend Supabase.",
-    "project.roofcrm.title": "RoofConnect CRM",
+    "project.roofcrm.title": "RoofConnect CRM (Solo PC)",
     "project.roofcrm.desc": "Plataforma CRM para empresas de techado. Gestiona clientes, proyectos y operaciones con un asistente impulsado por IA. Usa Supabase para autenticación segura en la nube. Demo: demuser@gmail.com / demouser1",
     "project.demo.credentials": "Credenciales de demo",
 

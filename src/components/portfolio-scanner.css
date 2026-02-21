@@ -8,6 +8,16 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%);
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%);
 }
 
 /* Card stream */
@@ -40,6 +50,43 @@
     width: 400px;
     height: 240px;
     flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.22s ease, filter 0.22s ease;
+}
+
+.scanner-card-wrapper:hover {
+    transform: translateY(-5px) scale(1.005);
+}
+
+/* "click for info" hint that fades in on hover */
+.scanner-card-wrapper::after {
+    content: "click for info ↓";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: hsl(var(--primary) / 0.18);
+    border: 1px solid hsl(var(--primary) / 0.5);
+    color: hsl(var(--primary));
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    pointer-events: none;
+    z-index: 20;
+    white-space: nowrap;
+}
+
+.scanner-card-wrapper:hover::after {
+    opacity: 1;
+}
+
+/* Hide hint on cards that have already passed the scanner */
+.scanner-card-wrapper.scanner-card-scanned::after {
+    display: none;
 }
 
 /* Both card layers */
@@ -174,6 +221,12 @@
     height: 300px;
     z-index: 10;
     pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+    .scanner-canvas {
+        display: none;
+    }
 }
 
 /* Control buttons */
