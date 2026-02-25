@@ -11,9 +11,9 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.greeting": "// hello world",
-    "hero.title1": "You imagine it.",
-    "hero.title2": "We build it.",
-    "hero.description": "Full-stack developer specializing in crafting beautiful, performant web applications — from pixel-perfect frontends to robust backend architectures.",
+    "hero.title1": "Grow your business.",
+    "hero.title2": "We build the way.",
+    "hero.description": "We craft digital solutions designed to bring you more leads, more sales, and real growth — not just a website.",
     "hero.viewWork": "view work",
     "hero.contactMe": "contact me",
 
@@ -22,6 +22,21 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.heading": "What we work with",
     "skills.frontend": "<Frontend />",
     "skills.backend": "{ Backend }",
+    "skills.growth": "[ Growth ]",
+    "skill.react": "React / Next.js",
+    "skill.typescript": "TypeScript",
+    "skill.tailwind": "Tailwind CSS",
+    "skill.framer": "Framer Motion",
+    "skill.supabase": "Supabase",
+    "skill.postgresql": "PostgreSQL / SQL",
+    "skill.nodejs": "Node.js",
+    "skill.restapi": "REST APIs",
+    "skill.googleads": "Google Ads",
+    "skill.fbads": "Facebook / Instagram Ads",
+    "skill.seo": "SEO",
+    "skill.emailmarketing": "Email Marketing",
+    "skill.cro": "Conversion Rate Optimization",
+    "skill.analytics": "Analytics & Tracking",
 
     // Portfolio
     "portfolio.comment": "// portfolio",
@@ -57,9 +72,9 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.greeting": "// hola mundo",
-    "hero.title1": "Tú lo imaginas.",
-    "hero.title2": "Nosotros lo construimos.",
-    "hero.description": "Desarrollador full-stack especializado en crear aplicaciones web hermosas y de alto rendimiento — desde frontends pixel-perfect hasta arquitecturas backend robustas.",
+    "hero.title1": "Crece tu negocio.",
+    "hero.title2": "Nosotros construimos el camino.",
+    "hero.description": "Creamos soluciones digitales diseñadas para traerte más clientes, más ventas y crecimiento real — no solo un sitio web.",
     "hero.viewWork": "ver trabajo",
     "hero.contactMe": "contáctame",
 
@@ -68,6 +83,21 @@ export const translations: Record<Lang, Record<string, string>> = {
     "skills.heading": "Con qué trabajamos",
     "skills.frontend": "<Frontend />",
     "skills.backend": "{ Backend }",
+    "skills.growth": "[ Crecimiento ]",
+    "skill.react": "React / Next.js",
+    "skill.typescript": "TypeScript",
+    "skill.tailwind": "Tailwind CSS",
+    "skill.framer": "Framer Motion",
+    "skill.supabase": "Supabase",
+    "skill.postgresql": "PostgreSQL / SQL",
+    "skill.nodejs": "Node.js",
+    "skill.restapi": "REST APIs",
+    "skill.googleads": "Google Ads",
+    "skill.fbads": "Facebook / Instagram Ads",
+    "skill.seo": "SEO",
+    "skill.emailmarketing": "Email Marketing",
+    "skill.cro": "Optimización de Conversión",
+    "skill.analytics": "Analítica y Seguimiento",
 
     // Portfolio
     "portfolio.comment": "// portafolio",
