@@ -7,10 +7,25 @@ const Navbar = () => {
   const { lang, setLang, t } = useI18n();
 
   const links = [
+    { label: t("nav.about"), href: "#about" },
     { label: t("nav.skills"), href: "#skills" },
     { label: t("nav.portfolio"), href: "#portfolio" },
     { label: t("nav.contact"), href: "#contact" },
   ];
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setOpen(false);
+      return;
+    }
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setOpen(false);
+    }
+  };
 
   return (
     <motion.nav
@@ -20,7 +35,7 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50"
     >
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-        <a href="#" className="font-mono font-bold text-primary text-sm">
+        <a href="#" onClick={(e) => handleScroll(e, "#")} className="font-mono font-bold text-primary text-sm">
           &lt;DevNest /&gt;
         </a>
 
@@ -31,6 +46,7 @@ const Navbar = () => {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="font-mono text-xs text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.label}
@@ -67,8 +83,8 @@ const Navbar = () => {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setOpen(false)}
-                className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
+                onClick={(e) => handleScroll(e, link.href)}
+                className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors block"
               >
                 {link.label}
               </a>

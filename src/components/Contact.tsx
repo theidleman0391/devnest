@@ -21,9 +21,9 @@ const Contact = () => {
     <section id="contact" className="py-24 px-6">
       <div className="max-w-2xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.5 }}
         >
           <p className="font-mono text-primary text-sm mb-2">{t("contact.comment")}</p>

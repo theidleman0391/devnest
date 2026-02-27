@@ -29,10 +29,11 @@ const projects: Project[] = [
     imageUrl: "/images/smartfix.png",
   },
   {
-    titleKey: "project.analytics.title",
-    descKey: "project.analytics.desc",
-    tags: ["Next.js", "SQL", "Recharts", "API"],
-    liveUrl: "#",
+    titleKey: "project.innovamob.title",
+    descKey: "project.innovamob.desc",
+    tags: ["Next.js", "SEO", "Blog", "React"],
+    liveUrl: "https://innova-mob.vercel.app",
+    imageUrl: "/images/innovamob.png",
   },
   {
     titleKey: "project.roofcrm.title",
@@ -651,21 +652,39 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="py-24">
       {/* Heading */}
-      <div className="max-w-5xl mx-auto px-6 mb-14">
+      <motion.div
+        className="max-w-5xl mx-auto px-6 mb-14"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="font-mono text-primary text-sm mb-2">{t("portfolio.comment")}</p>
         <h2 className="text-3xl md:text-4xl font-bold font-mono">{t("portfolio.heading")}</h2>
-      </div>
+      </motion.div>
 
       {/* Scanner strip */}
-      <div className="scanner-section-strip">
+      <motion.div
+        className="scanner-section-strip"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         <canvas ref={canvasRef} className="scanner-canvas" />
         <div className="scanner-card-stream">
           <div ref={cardLineRef} className="scanner-card-line" />
         </div>
-      </div>
+      </motion.div>
 
       {/* Controls */}
-      <div className="scanner-controls">
+      <motion.div
+        className="scanner-controls"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         <button
           className="scanner-control-btn"
           onClick={() => {
@@ -681,7 +700,7 @@ const Portfolio = () => {
         >
           ↔ Direction
         </button>
-      </div>
+      </motion.div>
 
       {/* Expanded project overlay */}
       <AnimatePresence>
@@ -756,14 +775,14 @@ const Portfolio = () => {
                       rel="noopener noreferrer"
                       className="flex-1 text-center font-mono text-xs px-4 py-2.5 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
                     >
-                      Visit Site ↗
+                      {t("project.action.visit")}
                     </a>
                   )}
                   <button
                     onClick={closeOverlay}
                     className="flex-1 font-mono text-xs px-4 py-2.5 border border-border rounded-lg text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
                   >
-                    Close
+                    {t("project.action.close")}
                   </button>
                 </div>
               </div>

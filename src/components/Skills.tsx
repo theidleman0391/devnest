@@ -33,7 +33,7 @@ const Skills = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
           <p className="font-mono text-primary text-sm mb-2">{t("skills.comment")}</p>
@@ -41,7 +41,7 @@ const Skills = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-12">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.5, delay: 0.1 }}>
             <h3 className="font-mono text-sm text-muted-foreground mb-6 uppercase tracking-wider">{t("skills.frontend")}</h3>
             <div className="space-y-5">
               {skills.frontend.map((skill) => (
@@ -51,14 +51,14 @@ const Skills = () => {
                     <span className="font-mono text-xs text-muted-foreground">{skill.level}%</span>
                   </div>
                   <div className="h-1 bg-secondary rounded-full overflow-hidden">
-                    <motion.div className="h-full bg-primary rounded-full" initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} />
+                    <motion.div className="h-full bg-primary rounded-full" initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.8, delay: 0.2 }} />
                   </div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.5, delay: 0.2 }}>
             <h3 className="font-mono text-sm text-muted-foreground mb-6 uppercase tracking-wider">{t("skills.backend")}</h3>
             <div className="space-y-5">
               {skills.backend.map((skill) => (
@@ -68,14 +68,14 @@ const Skills = () => {
                     <span className="font-mono text-xs text-muted-foreground">{skill.level}%</span>
                   </div>
                   <div className="h-1 bg-secondary rounded-full overflow-hidden">
-                    <motion.div className="h-full bg-primary rounded-full" initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3 }} />
+                    <motion.div className="h-full bg-primary rounded-full" initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.8, delay: 0.3 }} />
                   </div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.5, delay: 0.3 }}>
             <h3 className="font-mono text-sm text-muted-foreground mb-6 uppercase tracking-wider">{t("skills.growth")}</h3>
             <div className="space-y-5">
               {skills.growth.map((skill) => (
@@ -85,7 +85,7 @@ const Skills = () => {
                     <span className="font-mono text-xs text-muted-foreground">{skill.level}%</span>
                   </div>
                   <div className="h-1 bg-secondary rounded-full overflow-hidden">
-                    <motion.div className="h-full bg-primary rounded-full" initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }} />
+                    <motion.div className="h-full bg-primary rounded-full" initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.8, delay: 0.4 }} />
                   </div>
                 </div>
               ))}
