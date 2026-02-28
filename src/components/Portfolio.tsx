@@ -32,7 +32,7 @@ const projects: Project[] = [
     titleKey: "project.innovamob.title",
     descKey: "project.innovamob.desc",
     tags: ["Next.js", "SEO", "Blog", "React"],
-    liveUrl: "https://innova-mob.vercel.app",
+    liveUrl: "https://innovamob.com",
     imageUrl: "/images/innovamob.png",
   },
   {
